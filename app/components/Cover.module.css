@@ -7,9 +7,7 @@
   padding: 3rem 2rem;
   text-align: center;
   position: relative;
-  background: 
-    radial-gradient(ellipse at top, rgba(143, 188, 143, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at bottom, rgba(45, 90, 74, 0.08) 0%, transparent 60%);
+  background: linear-gradient(to bottom right, #23381E, #1f3219, #1a2b15);
   animation: coverFadeIn 1.2s ease-out;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
@@ -19,6 +17,47 @@
   transform: scale(0.95);
   pointer-events: none;
   position: absolute;
+}
+
+.heartsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  top: -30px;
+  color: #f85671;
+  animation: heartFall linear infinite;
+  text-shadow: 0 0 8px rgba(248, 176, 188, 0.4);
+}
+
+.heart:nth-child(odd) {
+  opacity: 0.85;
+}
+
+.heart:nth-child(3n) {
+  opacity: 0.65;
+}
+
+@keyframes heartFall {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100vh) translateX(15px);
+    opacity: 0.3;
+  }
 }
 
 @keyframes coverFadeIn {
@@ -69,6 +108,237 @@
 @keyframes leafFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* Envelope card */
+.envelopeCard {
+  position: relative;
+  width: 340px;
+  z-index: 1;
+  background: linear-gradient(to bottom right, #23381E, #1f3219, #1a2b15);
+  border: none;
+}
+
+@media (min-width: 640px) {
+  .envelopeCard {
+    width: 380px;
+  }
+}
+
+.envelopeFlap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100px;
+  transform-origin: top center;
+  overflow: visible;
+  z-index: 20;
+  background: linear-gradient(to bottom right, #23381E, #1f3219, #1a2b15);
+  border: none;
+}
+
+.envelopeFlapSvg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.seal {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 30% 30%, #4E6439, rgb(48, 70, 27));
+  box-shadow: 0 4px 20px rgba(78, 100, 57, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  z-index: 30;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: sealPulse 2s ease-in-out infinite;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.sealHeartSvg {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: #ffffff;
+}
+
+.cardInner {
+  padding-top: 100px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(78, 100, 57, 0.15);
+  border-top: none;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+
+.cardTitle {
+  color: #4E6439;
+  font-family: var(--font-cormorant), 'Baskerville', 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .cardTitle {
+    font-size: 1.875rem;
+  }
+}
+
+.cardLineGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardLine {
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #4E6439);
+}
+
+.cardLineRight {
+  width: 2.5rem;
+  height: 1px;
+  background: linear-gradient(to left, transparent, #4E6439);
+}
+
+.cardOrnament {
+  color: #4E6439;
+  opacity: 0.7;
+  font-size: 0.875rem;
+}
+
+.cardDate {
+  color: rgba(78, 100, 57, 0.7);
+  font-family: var(--font-lora), 'Baskerville', 'Times New Roman', serif;
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.cardInvitationWrap {
+  margin-bottom: 1.5rem;
+}
+
+.cardInvitationText {
+  color: rgba(78, 100, 57, 0.7);
+  font-family: var(--font-lora), 'Baskerville', 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.cardButton {
+  background-color: #4E6439;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(78, 100, 57, 0.35);
+  font-family: var(--font-cormorant), 'Baskerville', 'Times New Roman', serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.625rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(78, 100, 57, 0.45);
+}
+
+.cardButton:active {
+  transform: scale(0.95);
+}
+
+.cardButtonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cardButtonShine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2rem;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(200%); }
+  100% { transform: translateX(-100%); }
+}
+
+.cardDots {
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+  opacity: 0.3;
+}
+
+.cardDot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: #90EE90;
+}
+
+.cardDot:nth-child(2) {
+  background-color: #98FB98;
+}
+
+.cardDot:nth-child(3) {
+  background-color: #4E6439;
+}
+
+@media (max-width: 480px) {
+  .envelopeCard {
+    width: 320px;
+  }
+
+  .cardTitle {
+    font-size: 1.35rem;
+  }
+
+  .cardButton {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
 }
 
 .divider {
