@@ -129,7 +129,7 @@ export default function Cover({ isOpen, onOpen }: CoverProps) {
           </svg>
         </div>
         <div className={styles.cardInner}>
-          <h1 className={styles.cardTitle}>Toàn & Diệp</h1>
+          <h1 className={styles.cardTitle}>Hưng & Linh</h1>
           <div className={styles.cardLineGroup}>
             <div className={styles.cardLine} />
             <span className={styles.cardOrnament}>❦</span>

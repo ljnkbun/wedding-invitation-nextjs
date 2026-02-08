@@ -22,7 +22,7 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: 'Toàn & Diệp - Thiệp Cưới Thanh Diệp Xanh',
+  title: 'Hưng & Linh - Thiệp Cưới Thanh Diệp Xanh',
   description: 'Trân trọng kính mời quý khách tham dự đám cưới của chúng tôi',
 }
 
