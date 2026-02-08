@@ -19,6 +19,43 @@
   position: absolute;
 }
 
+.fireworkOverlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.fireworkHeart {
+  --tx: 0px;
+  --ty: 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.25rem;
+  color: #fa5570;
+  animation: fireworkBurst 1.4s ease-out forwards;
+  transform: translate(-50%, -50%) translate(0, 0);
+  opacity: 1;
+}
+
+@keyframes fireworkBurst {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty));
+    opacity: 0;
+  }
+}
+
 .heartsLayer {
   position: absolute;
   inset: 0;
@@ -115,8 +152,10 @@
   position: relative;
   width: 340px;
   z-index: 1;
-  background: linear-gradient(to bottom right, #23381E, #1f3219, #1a2b15);
+  background: #ffffff;
   border: none;
+  overflow: hidden;               /* ⭐ QUAN TRỌNG */
+  border-radius: 20px  20px  20px  20px ;    /* ⭐ BO Ở CARD */
 }
 
 @media (min-width: 640px) {
@@ -134,8 +173,8 @@
   transform-origin: top center;
   overflow: visible;
   z-index: 20;
-  background: linear-gradient(to bottom right, #23381E, #1f3219, #1a2b15);
-  border: none;
+  background: #ffffff;
+  border-radius: 50px 50px 0 0;
 }
 
 .envelopeFlapSvg {
@@ -174,11 +213,11 @@
 
 .cardInner {
   padding-top: 100px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(78, 100, 57, 0.15);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-top: none;
   border-radius: 0 0 1rem 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   position: relative;
   z-index: 5;
@@ -297,9 +336,9 @@
 }
 
 @keyframes shine {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(200%); }
-  100% { transform: translateX(-100%); }
+  0% { left: 0; }
+  50% { left: calc(100%); }
+  100% { left: 0; }
 }
 
 .cardDots {

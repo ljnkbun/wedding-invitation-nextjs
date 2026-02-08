@@ -1,8 +1,19 @@
+'use client'
+
+import { useState, useCallback, useRef } from 'react'
 import styles from './Cover.module.css'
 
 interface CoverProps {
   isOpen: boolean
   onOpen: () => void
+}
+
+const FIREWORK_HEARTS = 16
+const FIREWORK_DURATION = 1400
+const FIREWORK_MAX_DIST = 400
+
+function randomInRange(min: number, max: number) {
+  return min + Math.random() * (max - min)
 }
 
 const HEARTS = [
@@ -22,10 +33,60 @@ const HEARTS = [
 ]
 
 export default function Cover({ isOpen, onOpen }: CoverProps) {
+  const [showFirework, setShowFirework] = useState(false)
+  const [fireworkOrigin, setFireworkOrigin] = useState({ x: 0, y: 0 })
+  const [fireworkHearts, setFireworkHearts] = useState<Array<{ tx: number; ty: number }>>([])
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  const handleOpen = useCallback(() => {
+    const btn = buttonRef.current
+    if (btn) {
+      const rect = btn.getBoundingClientRect()
+      const x = rect.left + rect.width / 2
+      const y = rect.top + rect.height / 2
+      setFireworkOrigin({ x, y })
+      setFireworkHearts(
+        Array.from({ length: FIREWORK_HEARTS }, () => ({
+          tx: randomInRange(-FIREWORK_MAX_DIST, FIREWORK_MAX_DIST),
+          ty: randomInRange(-FIREWORK_MAX_DIST, FIREWORK_MAX_DIST),
+        }))
+      )
+    }
+    setShowFirework(true)
+    setTimeout(() => {
+      onOpen()
+      setShowFirework(false)
+    }, FIREWORK_DURATION)
+  }, [onOpen])
+
   return (
     <section 
       className={`${styles.cover} ${isOpen ? styles.hidden : ''}`}
     >
+      {/* Firework hearts from button to random places */}
+      {showFirework && (
+        <div
+          className={styles.fireworkOverlay}
+          style={{
+            left: fireworkOrigin.x,
+            top: fireworkOrigin.y,
+          }}
+          aria-hidden
+        >
+          {fireworkHearts.map((h, i) => (
+            <span
+              key={i}
+              className={styles.fireworkHeart}
+              style={{
+                ['--tx' as string]: `${h.tx}px`,
+                ['--ty' as string]: `${h.ty}px`,
+              }}
+            >
+              ❤
+            </span>
+          ))}
+        </div>
+      )}
       {/* Falling hearts */}
       <div className={styles.heartsLayer} aria-hidden>
         {HEARTS.map((h, i) => (
@@ -78,7 +139,7 @@ export default function Cover({ isOpen, onOpen }: CoverProps) {
           <div className={styles.cardInvitationWrap}>
             <p className={styles.cardInvitationText}>Thân Mời</p>
           </div>
-          <button type="button" className={styles.cardButton} onClick={onOpen}>
+          <button ref={buttonRef} type="button" className={styles.cardButton} onClick={handleOpen}>
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className={styles.cardButtonIcon}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" />
             </svg>
