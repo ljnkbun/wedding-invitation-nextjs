@@ -1,0 +1,217 @@
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  background: 
+    radial-gradient(ellipse at top, rgba(143, 188, 143, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(45, 90, 74, 0.08) 0%, transparent 60%);
+  animation: coverFadeIn 1.2s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.cover.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  position: absolute;
+}
+
+@keyframes coverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.leafDecoration {
+  position: absolute;
+  opacity: 0.15;
+  animation: leafFloat 6s ease-in-out infinite;
+}
+
+.leafTopLeft {
+  top: 10%;
+  left: 5%;
+  font-size: 3rem;
+  animation-delay: 0s;
+}
+
+.leafTopRight {
+  top: 15%;
+  right: 8%;
+  font-size: 2.5rem;
+  animation-delay: 1s;
+}
+
+.leafBottomLeft {
+  bottom: 15%;
+  left: 8%;
+  font-size: 2rem;
+  animation-delay: 2s;
+}
+
+.leafBottomRight {
+  bottom: 20%;
+  right: 5%;
+  font-size: 3.5rem;
+  animation-delay: 1.5s;
+}
+
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 2rem auto;
+  animation: dividerExpand 1s ease-out 0.5s both;
+}
+
+@keyframes dividerExpand {
+  from { width: 0; opacity: 0; }
+  to { width: 60px; opacity: 1; }
+}
+
+.coupleNames {
+  font-family: var(--font-cormorant), serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--color-primary);
+  margin: 1rem 0;
+  letter-spacing: 0.05em;
+  animation: namesSlideIn 1s ease-out 0.3s both;
+}
+
+@keyframes namesSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ornament {
+  font-size: 2rem;
+  color: var(--color-accent);
+  margin: 1.5rem 0;
+  animation: ornamentPulse 2s ease-in-out infinite;
+}
+
+@keyframes ornamentPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.date {
+  font-family: var(--font-lora), serif;
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  margin: 1rem 0 2rem;
+  animation: dateSlideIn 1s ease-out 0.6s both;
+}
+
+@keyframes dateSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invitationText {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+  font-style: italic;
+  opacity: 0.9;
+  animation: textFadeIn 1s ease-out 0.9s both;
+}
+
+@keyframes textFadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.9; }
+}
+
+.openButton {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-family: var(--font-quicksand), sans-serif;
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(45, 90, 74, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: buttonBounceIn 1s ease-out 1.2s both;
+}
+
+@keyframes buttonBounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.openButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.openButton:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.openButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(45, 90, 74, 0.4);
+}
+
+.openButton:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .coupleNames {
+    font-size: 2.5rem;
+  }
+
+  .openButton {
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
+  }
+}
