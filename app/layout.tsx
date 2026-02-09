@@ -22,8 +22,11 @@ const quicksand = Quicksand({
 })
 
 export const metadata: Metadata = {
-  title: 'Hưng & Linh - Thiệp Cưới Thanh Diệp Xanh',
+  title: 'Hưng ♡ Linh - Wedding Invitation',
   description: 'Trân trọng kính mời quý khách tham dự đám cưới của chúng tôi',
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
