@@ -1,9 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 
-export default function WeddingInvitation() {
+export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const sectionsRef = useRef<HTMLDivElement>(null);
-    const [isOpen, setIsOpen] = useState(true);
 
     const openDialog = () => {
         dialogRef.current?.showModal();

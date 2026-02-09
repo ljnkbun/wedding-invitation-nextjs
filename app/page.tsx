@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Header from './components/Header'
 import Cover from './components/Cover'
 import Content from './components/Content'
 import styles from './page.module.css'
@@ -15,7 +14,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* <Header /> */}
       <Cover isOpen={isOpen} onOpen={openInvitation} />
       <Content isOpen={isOpen} />
     </div>
