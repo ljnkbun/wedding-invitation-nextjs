@@ -21,9 +21,20 @@
     color: #fff;
     font-family: "Baskerville", "Times New Roman", serif;
     position: relative;
-    
+    animation: cardFloatIn 1s ease forwards;
     margin: 0 auto;
 }
+
+@keyframes cardFloatIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 
 /* headline */
 .announce {
@@ -40,6 +51,9 @@
     font-size: 52px;
     font-weight: 400;
     margin: 0;
+    text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.15),
+    0 0 20px rgba(255, 255, 255, 0.08);
 }
 
 .role {

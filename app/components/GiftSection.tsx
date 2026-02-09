@@ -1,5 +1,6 @@
 // components/sections/GiftSection.tsx
 import { useRef } from 'react';
+import './GiftSection.css';
 
 export default function GiftSection() {
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -247,14 +248,7 @@ export default function GiftSection() {
                         ))}
                     </div>
 
-                    <p style={{
-                        textAlign: 'center',
-                        fontSize: '0.875rem',
-                        margin: '0 1.5rem 1.5rem',
-                        opacity: 0.7,
-                        color: 'rgb(78, 100, 57)',
-                        fontFamily: 'Georgia, "Times New Roman", serif'
-                    }}>
+                    <p className="thank-you-text">
                         Cảm ơn bạn đã đồng hành cùng chúng mình trong ngày trọng đại!
                     </p>
                 </div>

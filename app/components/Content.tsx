@@ -54,7 +54,7 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
 
 
     return (
-        <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', padding: '20px' }}>
+        <div className="wedding-bg">
 
             <div ref={sectionsRef} className="content">
                 {/* Section 1: Invitation */}
@@ -69,7 +69,14 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
                 </section>
 
                 {/* Section 3: Ceremony */}
-                <section className="section wedding-info-section">
+                <section className="section reveal wedding-info-section">
+                    <div className="floating-hearts">
+                        <span className="heart"></span>
+                        <span className="heart"></span>
+                        <span className="heart"></span>
+                        <span className="heart"></span>
+                        <span className="heart"></span>
+                    </div>
                     <WeddingCeremonySection />
                 </section>
 
@@ -78,7 +85,7 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
 
             </div>
 
-           
+
             {/* Preview Album */}
             {previewIndex !== null && (
                 <div className="preview-backdrop" onClick={closePreview}>
@@ -112,6 +119,11 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
                     </div>
                 </div>
             )}
+
+
+            <div className="decor-circle decor-1" />
+            <div className="decor-circle decor-2" />
+            <div className="decor-circle decor-3" />
 
         </div>
     );

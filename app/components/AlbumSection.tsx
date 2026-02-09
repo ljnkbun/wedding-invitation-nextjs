@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './AlbumSection.css';
 
 // components/sections/AlbumSection.tsx
 interface Props {
