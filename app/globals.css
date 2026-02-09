@@ -18,6 +18,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var(--font-quicksand), sans-serif;
   background: linear-gradient(135deg, var(--color-cream) 0%, #f5f2ed 100%);
