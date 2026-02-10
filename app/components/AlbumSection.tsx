@@ -15,7 +15,7 @@ export default function AlbumSection({ images, onPreview }: Props) {
 
             <div className="album-wrapper">
                 <div className="album-grid">
-                    {images.map((src, i) => (
+                    {images.slice(0, 8).map((src, i) => (
                         <div
                             className="album-item"
                             key={i}
@@ -23,9 +23,9 @@ export default function AlbumSection({ images, onPreview }: Props) {
                         >
                             <img src={src} alt={`Ảnh cưới ${i + 1}`} />
 
-                            {i === 3 && (
+                            {i === 7 && images.length > 8 && (
                                 <div className="album-overlay">
-                                    <span>+6</span>
+                                    <span>+{images.length - 8}</span>
                                 </div>
                             )}
                         </div>

@@ -15,7 +15,7 @@
 }
 
 .wedding-card {
-    max-width: 420px;
+    max-width: 900px;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -149,7 +149,7 @@
 
 .location-wrapper {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     text-align: center;
     color: #ffffff;
     font-family: "Baskerville", "Times New Roman", serif;
@@ -177,7 +177,7 @@
     border-radius: 999px;
     font-size: 15px;
     line-height: 1.6;
-    max-width: 520px;
+    max-width: 600px;
 }
 
 /* divider */

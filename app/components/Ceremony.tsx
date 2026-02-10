@@ -11,14 +11,14 @@ export default function WeddingCeremonySection() {
                 </p>
 
                 <h1 className="bride-groom">
-                    Nguyễn Văn Toàn
+                    Lưu Minh Hưng
                 </h1>
                 <div className="role">TRƯỞNG NAM</div>
 
                 <div className="and">&amp;</div>
 
                 <h1 className="bride-groom">
-                    Trần Thanh Diệp
+                    Trần Hải Linh
                 </h1>
                 <div className="role">ÚT NỮ</div>
 
