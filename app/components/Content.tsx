@@ -4,6 +4,7 @@ import WeddingCeremonySection from './Ceremony';
 import InvitationSection from './InvitationSection';
 import AlbumSection from './AlbumSection';
 import GiftSection from './GiftSection';
+import GuestbookSection from './Guestbook';
 
 export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -86,6 +87,11 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
                         <span className="heart"></span>
                     </div>
                     <WeddingCeremonySection />
+                </section>
+
+
+                <section className="section reveal">
+                    <GuestbookSection />
                 </section>
 
                 {/* Section 3: Gift Box */}

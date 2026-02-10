@@ -1,0 +1,191 @@
+/* WRAP */
+/* ===== GUESTBOOK BACKGROUND ===== */
+.guestbook-wrap {
+    position: relative;
+    padding: 2.5rem 1.5rem 3rem;
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at top left, rgba(143, 188, 143, 0.22), transparent 45%),
+        radial-gradient(circle at bottom right, rgba(78, 100, 57, 0.22), transparent 45%),
+        linear-gradient(180deg, #fdfefe 0%, #eef3ee 100%);
+    overflow: hidden;
+}
+
+/* noise rất nhẹ cho sang */
+.guestbook-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+@keyframes guestbookFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.guestbook-form {
+    animation: guestbookFade 0.8s ease-out;
+}
+
+@keyframes cardFloatIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.guestbook-card {
+    animation: cardFloatIn 0.6s ease-out both;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.guestbook-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(78, 100, 57, 0.18);
+}
+
+/* decor tròn trôi nhẹ */
+.guestbook-wrap::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -120px;
+    right: -120px;
+    background: radial-gradient(circle, rgba(143, 188, 143, 0.35), transparent 70%);
+    border-radius: 50%;
+    animation: decorFloat 14s ease-in-out infinite;
+}
+
+@keyframes decorFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-30px, 30px);
+    }
+}
+
+
+/* TITLE */
+.guestbook-title {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 0.15em;
+    color: #4e6439;
+    margin-bottom: 2rem;
+}
+
+/* FORM */
+.guestbook-form {
+    background: #fafbf8;
+    border: 1px solid rgba(78, 100, 57, 0.35);
+    border-radius: 18px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    border: 1px solid rgba(78, 100, 57, 0.4);
+    background: #eef0ec;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.guestbook-form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(143, 188, 143, 0.35);
+    background: #f4f6f2;
+}
+
+/* ACTIONS */
+.guestbook-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-generate {
+    background: #eef0ec;
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: #4e6439;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.6rem 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #3f5330;
+}
+
+/* LIST */
+.guestbook-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+/* CARD */
+.guestbook-card {
+    background: #fbfcfa;
+    border: 1px solid rgba(78, 100, 57, 0.3);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+}
+
+.guestbook-card-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+}
+
+.guestbook-card .name {
+    font-weight: 600;
+    color: #4e6439;
+}
+
+.guestbook-card .time {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.guestbook-card .message {
+    line-height: 1.7;
+}
