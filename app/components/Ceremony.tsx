@@ -48,8 +48,17 @@ export default function WeddingCeremonySection() {
                 </p>
 
                 <div className="time">18:00</div>
-                <div className="lunar">ĐÃ DIỄN RA</div>
 
+                <div className="date">
+                    <span>THỨ BẢY</span>
+                    <span className="dot">|</span>
+                    <strong>07</strong>
+                    <span className="dot">|</span>
+                    <span>THÁNG 02</span>
+                </div>
+
+                <div className="year">2026</div>
+                <div className="lunar">(TỨC NGÀY 20/12 ẤT TỴ)</div>
             </div>
 
             <div className="wedding-location-section">
@@ -59,9 +68,10 @@ export default function WeddingCeremonySection() {
                         TIỆC CƯỚI SẼ TỔ CHỨC TẠI
                     </h3>
 
-                    <div className="location-address">
-                        Metropole Wedding Center, 216 Lý Chính Thắng, Phường 9, Quận 3,
-                        Thành phố Hồ Chí Minh
+                    <div className="location-address reveal-location">
+                        <strong>
+                            📍 Nhà hàng Tiệc cưới Xanh Palace, 10 P. Phạm Ngọc Thạch, Kim Liên, Đống Đa, Hà Nội, Việt Nam
+                        </strong>
                     </div>
 
                     <div className="location-divider"></div>
@@ -71,14 +81,12 @@ export default function WeddingCeremonySection() {
                     </h4>
 
                     <div className="map-frame">
-                        <div className="map-frame">
-                            <iframe
-                                src="https://www.google.com/maps?q=10.787029,106.681347&output=embed"
-                                loading="lazy"
-                                allowFullScreen>
-                            </iframe>
+                        <iframe
+                            src="https://www.google.com/maps?q=21.008136284598667, 105.83378015382542&output=embed"
+                            loading="lazy"
+                            allowFullScreen>
+                        </iframe>
 
-                        </div>
 
                     </div>
 
