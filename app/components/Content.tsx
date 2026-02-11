@@ -7,8 +7,32 @@ import GiftSection from './GiftSection';
 import GuestbookSection from './Guestbook';
 
 export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
-    const dialogRef = useRef<HTMLDialogElement>(null);
     const sectionsRef = useRef<HTMLDivElement>(null);
+    const [pageLoading, setPageLoading] = useState(true);
+    useEffect(() => {
+        if (!isOpen) return;
+
+        let loadedCount = 0;
+
+        images.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+
+            img.onload = () => {
+                loadedCount++;
+                if (loadedCount === images.length) {
+                    setPageLoading(false);
+                }
+            };
+
+            img.onerror = () => {
+                loadedCount++;
+                if (loadedCount === images.length) {
+                    setPageLoading(false);
+                }
+            };
+        });
+    }, [isOpen]);
 
     const [previewIndex, setPreviewIndex] = useState<number | null>(null);
     const images = [
@@ -61,9 +85,17 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
 
     if (!isOpen) return null;
 
-
+    if (pageLoading) {
+        return (
+            <div className="fullscreen-loader">
+                <img src="/images/logo-hy.png" alt="loading" />
+                <p>Đang tải khoảnh khắc yêu thương...</p>
+            </div>
+        );
+    }
     return (
-        <div className="wedding-bg">
+        <div className={`wedding-bg ${!pageLoading ? 'fade-in' : ''}`}>
+
 
             <div ref={sectionsRef} className="content">
                 {/* Section 1: Invitation */}

@@ -294,8 +294,8 @@
   min-height: 100vh;
   padding: 24px 16px 80px;
   background:
-    radial-gradient(circle at top left, rgba(143,188,143,0.25), transparent 45%),
-    radial-gradient(circle at bottom right, rgba(78,100,57,0.25), transparent 45%),
+    radial-gradient(circle at top left, rgba(143, 188, 143, 0.25), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(78, 100, 57, 0.25), transparent 45%),
     linear-gradient(180deg, #fdfefe 0%, #eef3ee 100%);
   position: relative;
   overflow-x: hidden;
@@ -314,7 +314,7 @@
 .decor-circle {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(143,188,143,0.35), transparent 70%);
+  background: radial-gradient(circle, rgba(143, 188, 143, 0.35), transparent 70%);
   animation: floatSlow 12s ease-in-out infinite;
   z-index: 0;
 }
@@ -343,9 +343,12 @@
 }
 
 @keyframes floatSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
+
   50% {
     transform: translateY(-30px) translateX(20px);
   }
@@ -397,21 +400,25 @@
   left: 15%;
   animation-duration: 9s;
 }
+
 .heart:nth-child(2) {
   left: 35%;
   animation-duration: 11s;
   transform: scale(0.8) rotate(45deg);
 }
+
 .heart:nth-child(3) {
   left: 55%;
   animation-duration: 10s;
   background: rgba(255, 255, 255, 0.7);
 }
+
 .heart:nth-child(4) {
   left: 75%;
   animation-duration: 12s;
   transform: scale(1.1) rotate(45deg);
 }
+
 .heart:nth-child(5) {
   left: 90%;
   animation-duration: 13s;
@@ -423,11 +430,63 @@
     transform: translateY(0) rotate(45deg);
     opacity: 0;
   }
+
   10% {
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(-120vh) rotate(45deg);
     opacity: 0;
+  }
+}
+
+.fullscreen-loader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fdf6f0, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.fullscreen-loader img {
+  width: 80px;
+  height: 80px;
+  animation: spin 1.2s linear infinite;
+}
+
+.fullscreen-loader p {
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #888;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fade-in {
+  animation: fadePage 1s ease forwards;
+}
+
+@keyframes fadePage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
