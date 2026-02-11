@@ -476,3 +476,28 @@
         transform: rotate(360deg);
     }
 }
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.loading-image {
+    width: 80px;
+    /* chỉnh size ở đây */
+    height: 80px;
+    object-fit: contain;
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -20,6 +20,7 @@ export default function GuestbookSection() {
     const [attendance, setAttendance] =
         useState<'yes' | 'no' | 'maybe' | ''>('');
     const [submitting, setSubmitting] = useState(false);
+    const [loadingMessages, setLoadingMessages] = useState(true);
 
     useEffect(() => {
         const el = document.querySelector('.guestbook-list');
@@ -31,10 +32,22 @@ export default function GuestbookSection() {
 
     // GET messages
     useEffect(() => {
-        fetch(SCRIPT_URL)
-            .then(res => res.json())
-            .then((data: Message[]) => setMessages(data))
-            .catch(console.error);
+        const fetchMessages = async () => {
+            try {
+                setLoadingMessages(true);
+
+                const res = await fetch(SCRIPT_URL);
+                const data: Message[] = await res.json();
+
+                setMessages(data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoadingMessages(false);
+            }
+        };
+
+        fetchMessages();
     }, []);
 
     // POST message
@@ -114,15 +127,25 @@ export default function GuestbookSection() {
 
             {/* LIST */}
             <div className="guestbook-list">
-                {messages.map((m, i) => (
-                    <div className="guestbook-card" key={i}>
-                        <div className="guestbook-card-head">
-                            <span className="name">{m.name}</span>
-                            <span className="time">{m.time}</span>
-                        </div>
-                        <div className="message">{m.message}</div>
+                {loadingMessages ? (
+                    <div className="loading-wrapper">
+                        <img
+                            src="/images/logo-hy.png"
+                            alt="loading"
+                            className="loading-image"
+                        />
                     </div>
-                ))}
+                ) : (
+                    messages.map((m, i) => (
+                        <div className="guestbook-card" key={i}>
+                            <div className="guestbook-card-head">
+                                <span className="name">{m.name}</span>
+                                <span className="time">{m.time}</span>
+                            </div>
+                            <div className="message">{m.message}</div>
+                        </div>
+                    ))
+                )}
             </div>
 
             {/* RSVP trigger */}
