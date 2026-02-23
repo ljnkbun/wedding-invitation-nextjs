@@ -1,6 +1,7 @@
 // components/sections/GiftSection.tsx
 import { useRef } from 'react';
 import './GiftSection.css';
+import { couple } from '../configs/images-config';
 
 export default function GiftSection() {
     const dialogRef = useRef<HTMLDialogElement>(null);
@@ -20,6 +21,8 @@ export default function GiftSection() {
         document.body.style.overflow = '';
         document.body.style.paddingRight = '';
     };
+
+
 
     return (
         <>
@@ -216,36 +219,38 @@ export default function GiftSection() {
                     </div>
 
                     <div style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        {[
-                            { title: 'Chú Rể - Văn Toàn', bank: 'Vietcombank', acc: '888888888', name: 'Nguyen Van Toan', url: 'VCB' },
-                            { title: 'Cô Dâu - Linh', bank: 'BIDV', acc: '99999999999', name: 'Linh', url: 'BIDV' }
-                        ].map((qr, i) => (
-                            <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '160px' }}>
-                                <h3 style={{ marginBottom: '0.5rem', fontSize: '0.75rem', fontWeight: 500, textAlign: 'center', color: 'rgb(78, 100, 57)' }}>
-                                    {qr.title}
-                                </h3>
-                                <div className="qr-container" style={{
-                                    width: '144px',
-                                    height: '144px',
-                                    backgroundColor: 'white',
-                                    borderRadius: '0.75rem',
-                                    padding: '0.5rem',
-                                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                                    border: '2px solid rgba(78, 100, 57, 0.125)'
-                                }}>
-                                    <img
-                                        alt={`QR Code - ${qr.title}`}
-                                        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                                        src={`https://qr.sepay.vn/img?bank=${qr.url}&acc=${qr.acc}&template=qronly`}
-                                    />
-                                </div>
-                                <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>
-                                    <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0' }}>{qr.bank}</p>
-                                    <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0', fontFamily: 'monospace' }}>{qr.acc}</p>
-                                    <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0', fontWeight: 600 }}>{qr.name}</p>
-                                </div>
-                            </div>
-                        ))}
+                        {
+                            [
+                                couple.groom.bank,
+                                couple.bride.bank,
+                            ]
+                                .map((qr, i) => (
+                                    <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '160px' }}>
+                                        <h3 style={{ marginBottom: '0.5rem', fontSize: '0.75rem', fontWeight: 500, textAlign: 'center', color: 'rgb(78, 100, 57)' }}>
+                                            {qr.title}
+                                        </h3>
+                                        <div className="qr-container" style={{
+                                            width: '144px',
+                                            height: '144px',
+                                            backgroundColor: 'white',
+                                            borderRadius: '0.75rem',
+                                            padding: '0.5rem',
+                                            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                                            border: '2px solid rgba(78, 100, 57, 0.125)'
+                                        }}>
+                                            <img
+                                                alt={`QR Code - ${qr.title}`}
+                                                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                                src={`https://qr.sepay.vn/img?bank=${qr.bankCode}&acc=${qr.accountNumber}&template=qronly`}
+                                            />
+                                        </div>
+                                        <div style={{ marginTop: '0.5rem', textAlign: 'center' }}>
+                                            <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0' }}>{qr.bankCode}</p>
+                                            <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0', fontFamily: 'monospace' }}>{qr.accountName}</p>
+                                            <p style={{ fontSize: '0.625rem', color: 'rgb(78, 100, 57)', margin: '2px 0', fontWeight: 600 }}>{qr.accountNumber}</p>
+                                        </div>
+                                    </div>
+                                ))}
                     </div>
 
                     <p className="thank-you-text">

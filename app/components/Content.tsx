@@ -5,6 +5,7 @@ import InvitationSection from './InvitationSection';
 import AlbumSection from './AlbumSection';
 import GiftSection from './GiftSection';
 import GuestbookSection from './Guestbook';
+import { weddingImages } from '../configs/images-config';
 
 export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
     const sectionsRef = useRef<HTMLDivElement>(null);
@@ -35,20 +36,7 @@ export default function WeddingInvitation({ isOpen }: { isOpen: boolean }) {
     }, [isOpen]);
 
     const [previewIndex, setPreviewIndex] = useState<number | null>(null);
-    const images = [
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/15d541d9-831d-49c5-9c11-3bc9f421e1d7.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/9b36d166-0fce-4a92-90c2-e0307284ceff.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/7303a48d-0dd9-4358-8ad1-d9969b8ae75e.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/7303a48d-0dd9-4358-8ad1-d9969b8ae75e.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/bbc734ce-d1c2-4c5b-8f84-196272e8b371.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/7303a48d-0dd9-4358-8ad1-d9969b8ae75e.jpg",
-        "https://d1kiuhmnc3a29.cloudfront.net/uploads/7303a48d-0dd9-4358-8ad1-d9969b8ae75e.jpg",
-    ];
+    const images = weddingImages;
 
     const closePreview = () => setPreviewIndex(null);
     const showPrev = () =>

@@ -1,4 +1,6 @@
 import './InvitationSection.css';
+import { groomImages, brideImages } from '../configs/images-config';
+
 // components/sections/InvitationSection.tsx
 export default function InvitationSection() {
     return (
@@ -27,7 +29,7 @@ export default function InvitationSection() {
                 {/* Groom */}
                 <div className="person groom zoom-in delay-1">
                     <div className="photo-frame rotate-left">
-                        <img src="https://d1kiuhmnc3a29.cloudfront.net/uploads/c23522cb-416d-4057-a7f2-efb404a603b4.jpg" />
+                        <img src={groomImages} />
                     </div>
                     <div className="person-text left">
                         <div className="label">Chú rể</div>
@@ -38,7 +40,7 @@ export default function InvitationSection() {
                 {/* Bride */}
                 <div className="person bride  zoom-in delay-2">
                     <div className="photo-frame rotate-right">
-                        <img src="https://d1kiuhmnc3a29.cloudfront.net/uploads/aad57b50-3fb4-41d6-9e89-e4ac116708a3.jpg" />
+                        <img src={brideImages} />
                     </div>
                     <div className="person-text right">
                         <div className="label">Cô dâu</div>
