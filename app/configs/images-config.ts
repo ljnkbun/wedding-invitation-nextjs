@@ -26,9 +26,9 @@ export const couple = {
         bank: {
             title: "Chú Rể - Văn Toàn",
             bankName: "Vietcombank",
-            accountNumber: "888888888",
-            accountName: "Nguyen Van Toan",
-            bankCode: "VCB",
+            accountNumber: "04106647602",
+            accountName: "Luu Minh Hung",
+            bankCode: "TPB",
         },
     },
     bride: {
