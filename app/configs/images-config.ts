@@ -24,7 +24,7 @@ export const couple = {
     groom: {
         name: "Minh Hưng",
         bank: {
-            title: "Chú Rể - Văn Toàn",
+            title: "Chú Rể - Minh Hưng",
             bankName: "Vietcombank",
             accountNumber: "04106647602",
             accountName: "Luu Minh Hung",
@@ -34,7 +34,7 @@ export const couple = {
     bride: {
         name: "Hải Linh",
         bank: {
-            title: "Cô Dâu - Linh",
+            title: "Cô Dâu - Hải Linh",
             bankName: "BIDV",
             accountNumber: "99999999999",
             accountName: "Linh",
